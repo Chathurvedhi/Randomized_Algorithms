@@ -1,0 +1,145 @@
+\documentclass[addpoints,12pt]{exam}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\useosf
+\linespread{1.05}
+\usepackage[T1]{fontenc}  
+\usepackage{hyperref}
+\usepackage[top=0.5in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
+\printanswers
+\marksnotpoints
+
+\pointformat{\textcolor{Maroon}{(\thepoints)}}
+\qformat{\textcolor{Maroon}{\textbf{Problem~\thequestion}} \hfill
+  \textcolor{Maroon}{\textbf{\totalpoints~\points}}}
+
+
+\newcommand{\course}{{\large CS6170: \textsc{Randomized} \textsc{Algorithms}}}
+\newcommand{\pset}[1]{{\large \textsc{Problem} \textsc{Set} \##1}}
+\newcommand{\due}[1]{{\textsc{Due}: #1}}
+\newcommand{\name}[1]{\textsc{Name}: \textcolor{Blue}{#1}}
+\newcommand{\rno}[1]{\textsc{Roll} \textsc{No}: \textcolor{Blue}{#1}}
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%% Your macros come here%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\F}{\mathbb{F}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+	
+	\hrule height 2pt
+	\vspace{2mm}
+	{\centering \course \par}
+	\vspace{1mm}
+	{\centering \pset{1}\par}
+	\vspace{1mm}
+	\noindent \name{Your name} \hfill \textsc{Marks}: \numpoints\\
+	\rno{Your roll number}\hfill \due{August 27, 23:59}
+	\vspace{2mm}
+	\hrule height 2pt
+	\vspace{2mm}
+	
+	\begin{questions}
+
+          \question[3] Suppose that you want to generate a random permutation of
+          the sequence of numbers $1$ to $n$. You have at your disposal, a
+          source of unbiased random bits. Give an efficient algorithm
+          to generate a random permutation using as few random bits as possible
+          from the source.
+          \begin{solution}
+            Type your solution here.
+          \end{solution}
+
+          \question[4] While discussing Frievald's algorithm for verifying
+          matrix multiplication, the following algorithms were proposed in
+          class.
+          \begin{enumerate}
+          \item \textbf{Algorithm 1}: Given $A$, $B$, $C$, choose a number $j$
+            uniformly at random from $\{1,2,\ldots,n\}$ and multiply $A$ with
+            the $j^{th}$ column of $B$ and check if it matches the $j^{th}$
+            column of $C$ entrywise.
+          \item \textbf{Algorithm 2}: Given $A$, $B$, $C$, choose two numbers
+            $i$ and $j$ uniformly at random from $\{1,2,\ldots,n\}$ and multiply
+            the $i^{th}$ row of $A$ and the $j^{th}$ column of $B$ and check if
+            the product is equal to the $(i,j)^{th}$ entry of $C$.
+          \end{enumerate}
+          Analyze the two algorithms and explain which one is better. Are these
+          algorithms better than Frievald's algorithm? What is the running time
+          of this algorithm if I want to make the error probability $\epsilon$?
+          \begin{solution}
+            Type your solution here.
+          \end{solution}
+		
+          \question[5]  An $s$-$t$-cut in a graph is a set of edges such that
+          their removal gives a new graph which does not contain a path from $s$
+          to $t$. Consider the following modification of Karger's algorithm to
+          compute the smallest $s$-$t$-cut in the graph: Choose a random edge in
+          the graph such that it not between supernodes containing $s$ and $t$,
+          and contract it; keep continuing until the only two supernodes are the
+          ones containing $s$ and $t$, and output this as the minimum
+          $s$-$t$-cut.
+
+          Show that there are graphs such that the success probability of this
+          algorithm finding the minimum $s$-$t$-cut is exponentially small.
+          \begin{solution}
+            Type your solution here.
+          \end{solution}
+          
+          \question Consider the following randomized algorithm.
+          
+          \begin{algorithm}[H]
+            \SetKwFor{Repeat}{repeat}{times}{}
+
+            Set $X \gets 0$
+
+            \Repeat{$n$}{
+              Set $X \gets X+1$ with probability $1/2^X$
+            }
+
+            Set $Y \gets 2^X - 1$
+            \caption{}
+          \end{algorithm}
+
+          \begin{parts}
+            \part[5] Compute $\E[Y]$.
+             \begin{solution}
+               Type your solution here.
+             \end{solution}
+         
+             \part[3] Give a tight bound on the number of bits required to
+             represent $X$. Notice that the number of bits required to represent
+             $X$ is a random variable.
+             \begin{solution}
+               Type your solution here.
+             \end{solution}
+           \end{parts}
+
+           \question[5] A collection of $n$ bits $X_1, X_2, \ldots, X_n$ are
+           said to be $k$-wise independent if for every subset $S$ of $k$ bits
+           among the $n$, and for $b_1, b_2, \ldots, b_k \in \{0,1\}$, we have
+           \begin{align*}
+             \Pr\left[\bigcap_{i\in S} X_i = b_i\right] = \prod_{i\in S} \Pr\left[X_i = b_i \right]
+           \end{align*}
+
+           Consider the following construction: Let
+           $\vect{x}_1, \vect{x}_2, \ldots, \vect{x}_n \in \{0,1\}^\ell$ be $n$
+           vectors such that every set of $k$ vectors are linearly independent
+           over $\F_2$. Let $\vect{y}\in \{0,1\}^\ell$ be chosen uniformly at
+           random. Define $X_i$s as follows:
+           \begin{align*}
+             X_i = \left( \sum_{j=1}^\ell \vect{x}_{i,j}\vect{y}_j \right) \text{ mod $2$}.
+           \end{align*}
+           Show that $X_i$s are $k$-wise independent.
+           \begin{solution}
+               Type your solution here.
+             \end{solution}
+	\end{questions}
+\end{document}
